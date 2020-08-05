@@ -1,4 +1,5 @@
 
+  
 # esx_truckerjob
 ## Information
 This resource is based on schneehaze’s trucking job, but his resource was not working probably and is not a real job that you can get at the Jobcenter. I decided to use his resource as a base for a perfectly working job that you can get at the Jobcenter. Currently it has just minor changes to his resource but I’m going to work a lot of it.
@@ -9,7 +10,11 @@ This resource allows you to install a Trucker Job on your Fivem ESX server. Curr
 ## ToDo
 
  - Remove MissionText as requirement
- - Create a “real” job
+ - ~~Create a “real” job~~
+ - Rename the blip
+ - Config
+ - Realistic Truck Depot
+ - Multiple Trailer Locations
 
 ## Requirements
 
