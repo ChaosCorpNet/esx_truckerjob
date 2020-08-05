@@ -20,7 +20,7 @@ This resource allows you to install a Trucker Job on your Fivem ESX server. Curr
 
  - ESX
  - es_extended
- - esx_jobs (in the future)
+ - esx_jobs
  - MissionText (https://github.com/schneehaze/fivem_missiontext)
 
 ## Installation
@@ -28,5 +28,6 @@ This resource allows you to install a Trucker Job on your Fivem ESX server. Curr
  1. Download the resource from my github
  2. Download schneehaze’s MissionText
  3. Drag both resources into your “resources”-folder
- 4. add “start MissionText” and “start TruckerJob” in your server.cfg
+ 4. Add “start MissionText” and “start TruckerJob” in your server.cfg
+ 5. Import esx_truckerjob.sql into your database
  5. Start the resources/Restart your Server
