@@ -14,9 +14,18 @@ local Keys = {
 	["LEFT"] = 174, ["RIGHT"] = 175, ["TOP"] = 27, ["DOWN"] = 173,
 	["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
 }
+ESX = nil
+playerData = nil
+Citizen.CreateThread(function()
+	while ESX == nil do
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+		Citizen.Wait(0)
+	end
+	playerData = ESX.GetPlayerData()
+end)
 
 --use this for debugging
-function Chat(t)
+function sendChatMessage(t)
 	TriggerEvent("chatMessage", 'TRUCKER', { 0, 255, 255}, "" .. tostring(t))
 end
 
@@ -152,7 +161,7 @@ function tick()
     
     
     --Show menu, when player is near
-    if( MISSION.start == false) then
+    if( MISSION.start == false) and playerData.job.name == "trucker" then
     if( GetDistanceBetweenCoords( playerCoords, TruckingCompany[0]["x"], TruckingCompany[0]["y"], TruckingCompany[0]["z"] ) < 10) then
             if(GUI.showStartText == false) then
                 GUI.drawStartText()
@@ -200,7 +209,7 @@ function tick()
         if ( GetDistanceBetweenCoords(currentMission[1], currentMission[2], currentMission[3], trailerCoords ) < 25 and  not IsEntityAttached(MISSION.trailer)) then
             TriggerEvent("mt:missiontext", "You gained $"..currentMission[4], 5000)
             MISSION.removeMarker()
-            TriggerServerEvent(‘truckerJob:success’,currentMission[4])
+            TriggerServerEvent("truckerJob:success",currentMission[4])
             clear()
         elseif ( GetDistanceBetweenCoords(currentMission[1], currentMission[2], currentMission[3], trailerCoords ) < 25 and IsEntityAttached(MISSION.trailer) ) then
             TriggerEvent("mt:missiontext", "Arrived. Detach your ~o~trailer~w~ with ~r~H~w~", 15000)
